@@ -11,7 +11,7 @@ const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
 // create middleware to handle the serving the app
-app.use('/', serveStatic(path.join(__dirname, '../.nuxt')))
+app.use('/', serveStatic(path.join(__dirname, '/../.nuxt')))
 
 async function start () {
   // Init Nuxt.js
