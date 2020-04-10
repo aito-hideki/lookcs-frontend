@@ -1,4 +1,7 @@
+const path = require('path')
 const express = require('express')
+const serveStatic = require('serve-static')
+
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
@@ -19,6 +22,9 @@ async function start () {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
+  // create middleware to handle the serving the app
+  app.use('/', serveStatic(path.join(__dirname, '/dist')))
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
