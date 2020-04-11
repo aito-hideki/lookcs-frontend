@@ -1,6 +1,6 @@
 # lookcs-frontend
 
-> Lookcs Frontend
+> Front-end Project de Lookcs
 
 ## Build Setup
 
