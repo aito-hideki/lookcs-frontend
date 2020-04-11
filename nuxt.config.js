@@ -28,6 +28,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/swiper',
+    '@/plugins/components',
+    '@/plugins/composition-api'
   ],
   /*
   ** Nuxt.js dev-modules

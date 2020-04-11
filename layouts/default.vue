@@ -18,6 +18,13 @@
         <span>Go to Home</span>
       </v-tooltip>
 
+      <v-subheader>
+        <v-icon class="mr-1" color="secondary lighten-3">
+          mdi-account-heart
+        </v-icon>
+        3,483 Followers
+      </v-subheader>
+
       <v-spacer />
 
       <v-row
@@ -132,7 +139,7 @@
     </v-navigation-drawer>
 
     <v-content>
-      <v-container>
+      <v-container fluid>
         <nuxt />
       </v-container>
     </v-content>
