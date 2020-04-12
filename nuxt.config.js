@@ -23,13 +23,15 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    'video.js/dist/video-js.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
     '@/plugins/composition-api',
-    '@/plugins/components'
+    '@/plugins/components',
+    { src: '@/plugins/nuxt-video-player-plugin.js', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
