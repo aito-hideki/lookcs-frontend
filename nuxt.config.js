@@ -28,8 +28,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/composition-api',
     '@/plugins/components',
-    '@/plugins/composition-api'
+    '@/plugins/videojs'
   ],
   /*
   ** Nuxt.js dev-modules
