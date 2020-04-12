@@ -99,7 +99,6 @@ const useCarouselIndex = (props, { itemsPerPage, children }) => {
   const next = () => {
     if (!ableNext.value) { return }
     currentIdx.value = currentIdx.value + 1
-    console.log(currentIdx.value, reachableIndex.value, children.value.length, itemsPerPage.value)
   }
   const prev = () => {
     if (!ablePrev.value) { return }
