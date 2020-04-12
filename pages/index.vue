@@ -20,6 +20,7 @@
           v-for="j in 6"
           :key="`content-${i}-${j}`"
           :options="playerOptions"
+          cover
         />
       </common-carousel>
     </v-col>
@@ -66,9 +67,11 @@ export default {
         language: 'en',
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         fluid: true,
+        aspectRatio: '16:9',
+        cover: true,
         sources: [{
           type: 'video/mp4',
-          src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm'
+          src: 'https://dms.licdn.com/playback/C4D05AQExY9ZV-vq_7w/7b378538564e43b8bc2f0e67e07e91c9/feedshare-video-captions-thumbnails-dualWrite-aws-mp4_500/1568697400698-esunx9?e=1586808000&v=beta&t=7_uZhO-tVmU7D0MAYGibB_tKhq0nfGwi5sb-pW_5srE'
         }]
       }
     }
