@@ -1,7 +1,7 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-app-bar
-      clipped-right
+      class="elevation-0"
       fixed
       app
     >
@@ -27,8 +27,24 @@
 
       <v-spacer />
 
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            icon
+            v-on="on"
+            @click="toggleThemeMode"
+          >
+            <v-icon>
+              {{ $vuetify.theme.dark ? 'mdi-weather-night' : 'mdi-lightbulb-on' }}
+            </v-icon>
+          </v-btn>
+        </template>
+        <span>Switch to {{ $vuetify.theme.dark ? 'Light' : 'Dark' }} mode</span>
+      </v-tooltip>
+
       <v-row
         v-show="$vuetify.breakpoint.mdAndUp"
+        class="flex-grow-0"
         justify="end"
         no-gutters
       >
@@ -42,7 +58,7 @@
             <template v-slot:activator="{ on }">
               <v-btn
                 icon
-                :to="item.to"
+                @click="$router.push(item.to)"
                 v-on="on"
               >
                 <v-icon>
@@ -64,7 +80,7 @@
           </v-btn>
         </template>
 
-        <v-list class="mt-12" width="200" light>
+        <v-list class="mt-12" width="200">
           <v-list-item
             to="/profile"
             router
@@ -151,38 +167,56 @@
 </template>
 
 <script>
+import { ref } from '@vue/composition-api'
+
 export default {
-  data () {
+  setup (props, { root }) {
+    const drawer = ref(false)
+    const fixed = ref(false)
+    const items = ref([
+      {
+        icon: 'mdi-cloud-upload',
+        title: 'Upload Content',
+        to: '/upload'
+      },
+      {
+        icon: 'mdi-bitcoin',
+        title: 'Fund',
+        to: '/fund'
+      },
+      {
+        icon: 'mdi-cart',
+        title: 'Checkout',
+        to: '/cart'
+      },
+      {
+        icon: 'mdi-email-mark-as-unread',
+        title: 'Notifications',
+        to: '/notifications'
+      }
+    ])
+
+    const toggleThemeMode = () => {
+      if (root.$vuetify.theme.dark) {
+        root.$vuetify.theme.dark = false
+        root.$vuetify.theme.light = true
+      } else {
+        root.$vuetify.theme.light = false
+        root.$vuetify.theme.dark = true
+      }
+    }
+
     return {
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-cloud-upload',
-          title: 'Upload Content',
-          to: '/upload'
-        },
-        {
-          icon: 'mdi-bitcoin',
-          title: 'Fund',
-          to: '/fund'
-        },
-        {
-          icon: 'mdi-cart',
-          title: 'Checkout',
-          to: '/cart'
-        },
-        {
-          icon: 'mdi-email-mark-as-unread',
-          title: 'Notifications',
-          to: '/notifications'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      drawer,
+      fixed,
+      items,
+
+      toggleThemeMode
     }
   }
 }
 </script>
+
+<style lang="scss">
+@import url(@/styles/index.scss);
+</style>

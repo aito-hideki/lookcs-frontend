@@ -74,5 +74,15 @@ module.exports = {
     */
     // extend (config, ctx) {
     // }
+  },
+  router: {
+    base: '/',
+    routeNameSplitter: '/',
+    extendRoutes (routes, resolve) {
+      routes.push({
+        path: '*',
+        redirect: '/'
+      })
+    }
   }
 }
