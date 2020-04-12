@@ -12,8 +12,19 @@
       :style="wrapperStyle"
     >
       <div class="common-carousel__content d-flex flex-row">
+        <template v-for="(child, idx) in children">
+          <div
+            v-if="child.context"
+            :key="idx"
+            class="common-carousel__item"
+            :style="itemStyle"
+          >
+            <v-node :vnode="child" />
+          </div>
+        </template>
         <div
-          class="common-carousel__item d-flex align-center justify-center"
+          v-if="infiniteLoading"
+          class="common-carousel__item"
           :style="itemStyle"
         >
           <v-progress-circular
@@ -23,19 +34,6 @@
             indeterminate
           />
         </div>
-        <template v-for="(child, idx) in children">
-          <div
-            v-if="child.context"
-            :key="idx"
-            class="common-carousel__item"
-            :style="itemStyle"
-          >
-            <component
-              :is="child.componentOptions.tag"
-              v-bind="child.componentOptions.propsData"
-            />
-          </div>
-        </template>
       </div>
     </div>
     <V-btn icon>
@@ -56,6 +54,7 @@ const useComponentStyling = (props) => {
     overflow: 'hidden auto',
     width: `${wrapperWidth.value}px`
   }))
+  const itemsPerPage = ref(0)
 
   const itemStyle = computed(() => ({
     width: `${props.itemWidth}px`
@@ -66,8 +65,8 @@ const useComponentStyling = (props) => {
   const startResizeHandler = () => {
     resizeHandlerTimer.value = setInterval(() => {
       const width = container.value ? container.value.clientWidth : 0
-      wrapperWidth.value = Math.floor((width - 88) / props.itemWidth) * props.itemWidth
-      console.log(wrapperWidth.value)
+      itemsPerPage.value = Math.floor((width - 88) / props.itemWidth)
+      wrapperWidth.value = ((props.maxPerPage && props.maxPerPage < itemsPerPage.value ? props.maxPerPage : itemsPerPage.value) || 1) * props.itemWidth
     }, 50)
   }
   const stopResizeHandler = () => {
@@ -80,13 +79,20 @@ const useComponentStyling = (props) => {
   return {
     container,
     wrapper,
-
     wrapperStyle,
-    itemStyle
+    itemStyle,
+
+    itemsPerPage
   }
 }
 
 export default {
+  components: {
+    VNode: {
+      functional: true,
+      render: (h, ctx) => ctx.props.vnode
+    }
+  },
   props: {
     itemWidth: {
       type: Number,
@@ -95,6 +101,10 @@ export default {
     infiniteLoading: {
       type: Boolean,
       defualt: false
+    },
+    maxPerPage: {
+      type: Number,
+      default: null
     }
   },
   setup (props, { root, slots }) {
