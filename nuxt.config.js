@@ -29,8 +29,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/composition-api',
-    '@/plugins/components',
-    '@/plugins/videojs'
+    '@/plugins/components'
   ],
   /*
   ** Nuxt.js dev-modules
