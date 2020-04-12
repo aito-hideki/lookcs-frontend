@@ -1,7 +1,15 @@
 <template>
-  <section class="container">
+  <common-carousel>
     <common-video-player :options="playerOptions" />
-  </section>
+    <common-video-player :options="playerOptions" />
+    <common-video-player :options="playerOptions" />
+    <common-video-player :options="playerOptions" />
+    <common-video-player :options="playerOptions" />
+    <common-video-player :options="playerOptions" />
+    <common-video-player :options="playerOptions" />
+    <common-video-player :options="playerOptions" />
+    <common-video-player :options="playerOptions" />
+  </common-carousel>
 </template>
 
 <script>
