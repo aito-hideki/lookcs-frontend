@@ -53,11 +53,11 @@
 </template>
 
 <script>
-import { ref, computed } from '@vue/composition-api'
+import { ref, computed, onMounted, onBeforeUnmount } from '@vue/composition-api'
 
 const useLayout = (props) => {
   const container = ref(null)
-  const containerWidth = computed(() => container.value ? container.value.clientWidth : 0)
+  const containerWidth = ref(0) // computed(() => container.value ? container.value.clientWidth : 0)
 
   const itemsPerPage = computed(() => Math.floor((containerWidth.value - 88) / props.itemWidth))
 
@@ -71,11 +71,23 @@ const useLayout = (props) => {
 
   const itemStyle = computed(() => ({ width: `${props.itemWidth}px` }))
 
+  const adjustContainerLayout = () => {
+    containerWidth.value = container.value.clientWidth
+  }
+
+  onMounted(() => {
+    window.addEventListener('resize', adjustContainerLayout)
+  })
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', adjustContainerLayout)
+  })
+
   return {
     container,
     wrapper,
     wrapperStyle,
     itemStyle,
+    adjustContainerLayout,
 
     itemsPerPage
   }
@@ -142,7 +154,9 @@ export default {
   setup (props, { root, slots }) {
     // Basic layout information
     const componentStyle = useLayout(props)
-    const { itemsPerPage } = componentStyle
+    const { itemsPerPage, adjustContainerLayout } = componentStyle
+
+    root.$nextTick(() => adjustContainerLayout())
 
     // Get child items from default slot
     const children = computed(() => slots.default() ? slots.default().map(item => item) : [])
