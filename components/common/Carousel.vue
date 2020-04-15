@@ -72,7 +72,7 @@ const useLayout = (props) => {
   const itemStyle = computed(() => ({ width: `${props.itemWidth}px` }))
 
   const adjustContainerLayout = () => {
-    containerWidth.value = container.value.clientWidth
+    containerWidth.value = container.value ? container.value.clientWidth : 0
   }
 
   onMounted(() => {

@@ -65,7 +65,6 @@ export default {
       playerOptions: {
         muted: true,
         language: 'en',
-        playbackRates: [0.7, 1.0, 1.5, 2.0],
         fluid: true,
         aspectRatio: '16:9',
         cover: true,
