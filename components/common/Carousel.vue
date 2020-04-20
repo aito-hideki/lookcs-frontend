@@ -7,13 +7,14 @@
     <V-btn
       icon
       :disabled="!ablePrev"
+      :style="`margin-bottom: ${offset}px`"
       @click="prev"
     >
       <v-icon>mdi-chevron-left</v-icon>
     </V-btn>
     <div
       ref="wrapper"
-      :style="wrapperStyle"
+      class="common-carousel__wrapper"
     >
       <div
         class="common-carousel__content d-flex flex-row"
@@ -45,6 +46,7 @@
     <V-btn
       icon
       :disabled="!ableNext"
+      :style="`margin-bottom: ${offset}px`"
       @click="next"
     >
       <v-icon>mdi-chevron-right</v-icon>
@@ -55,21 +57,18 @@
 <script>
 import { ref, computed, onMounted, onBeforeUnmount } from '@vue/composition-api'
 
-const useLayout = (props) => {
+const useLayout = (props, { children }) => {
   const container = ref(null)
   const containerWidth = ref(0) // computed(() => container.value ? container.value.clientWidth : 0)
 
-  const itemsPerPage = computed(() => Math.floor((containerWidth.value - 88) / props.itemWidth))
+  const itemsPerPage = computed(() => {
+    const cnt = Math.floor((containerWidth.value - 72) / props.itemWidth)
+    return cnt > 0 ? cnt : 1
+  })
 
   const wrapper = ref(null)
-  const wrapperWidth = computed(() => ((props.maxPerPage && props.maxPerPage < itemsPerPage.value
-    ? props.maxPerPage : itemsPerPage.value) || 1) * props.itemWidth)
-  const wrapperStyle = computed(() => ({
-    overflow: 'hidden auto',
-    width: `${wrapperWidth.value}px`
-  }))
 
-  const itemStyle = computed(() => ({ width: `${props.itemWidth}px` }))
+  const itemStyle = computed(() => ({ width: `${100 / (children.value.length || 1)}%` }))
 
   const adjustContainerLayout = () => {
     containerWidth.value = container.value ? container.value.clientWidth : 0
@@ -85,7 +84,6 @@ const useLayout = (props) => {
   return {
     container,
     wrapper,
-    wrapperStyle,
     itemStyle,
     adjustContainerLayout,
 
@@ -149,17 +147,21 @@ export default {
     maxPerPage: {
       type: Number,
       default: null
+    },
+    offset: {
+      type: Number,
+      default: 0
     }
   },
   setup (props, { root, slots }) {
+    // Get child items from default slot
+    const children = computed(() => slots.default() ? slots.default().map(item => item) : [])
+
     // Basic layout information
-    const componentStyle = useLayout(props)
+    const componentStyle = useLayout(props, { children })
     const { itemsPerPage, adjustContainerLayout } = componentStyle
 
     root.$nextTick(() => adjustContainerLayout())
-
-    // Get child items from default slot
-    const children = computed(() => slots.default() ? slots.default().map(item => item) : [])
 
     // Carousel Index management
     const carouselIndex = useCarouselIndex(props, { itemsPerPage, children })
@@ -167,7 +169,8 @@ export default {
 
     // Content Box style
     const contentStyle = computed(() => ({
-      'margin-left': `-${pointerIdx.value * props.itemWidth}px`
+      'margin-left': `-${pointerIdx.value * 100 / (itemsPerPage.value || 1)}%`,
+      width: `${100 * children.value.length / itemsPerPage.value}%`
     }))
 
     return {
@@ -193,6 +196,14 @@ export default {
     flex-grow: 0;
     flex-shrink: 0;
     padding: 10px;
+  }
+
+  &__wrapper {
+    overflow: hidden hidden;
+    max-width: calc(100% - 72px);
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: nowrap;
   }
 }
 </style>

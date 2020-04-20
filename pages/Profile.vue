@@ -1,75 +1,168 @@
 <template>
-  <v-row no-gutters>
-    <v-col
-      cols="12"
-      lg="9"
-      xl="10"
-    >
+  <v-content>
+    <v-container fluid>
+      <v-row class="align-stretch justify-center">
+        <v-col
+          class="d-flex flex-row-reverse align-center justify-center"
+          cols="12"
+          sm="6"
+          lg="4"
+        >
+          <div class="d-flex flex-column align-center pt-12">
+            <v-badge color="success" icon="mdi-check" overlap>
+              <v-avatar class="d-block d-lg-none mb-2" size="150">
+                <v-img src="/company/bunny.jpg" />
+              </v-avatar>
+              <v-avatar class="d-none d-lg-block mb-2" size="200">
+                <v-img src="/company/bunny.jpg" />
+              </v-avatar>
+            </v-badge>
+            <div class="title">
+              Aito0109
+            </div>
+            <div class="subtitle-2">
+              1.38M Followers
+            </div>
+          </div>
+          <div class="d-flex flex-column align-center mr-4 align-stretch pb-6">
+            <v-btn class="my-1" color="red darken-1">
+              Subscribe
+            </v-btn>
+            <v-btn class="my-1" color="red darken-1">
+              Follow
+            </v-btn>
+            <v-btn class="my-1" color="red darken-1">
+              Donate
+            </v-btn>
+            <v-btn class="my-1" color="red darken-1">
+              Shop
+            </v-btn>
+          </div>
+        </v-col>
+        <v-col
+          class="d-flex flex-column justify-center order-sm-1 order-lg-0"
+          cols="12"
+          sm="8"
+          md="6"
+          lg="4"
+        >
+          <common-video-player :options="playerOptions" />
+        </v-col>
+        <v-col
+          class="d-flex flex-row align-stretch order-1 order-sm-0"
+          cols="12"
+          sm="6"
+          lg="4"
+        >
+          <v-card class="flex-grow-1">
+            <v-card-title>
+              Description
+            </v-card-title>
+            <v-card-text>
+              This is tutorial version.
+            </v-card-text>
+          </v-card>
+          <div class="d-flex flex-column ml-2">
+            <v-btn icon>
+              <v-icon color="primary">
+                mdi-twitter
+              </v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon color="primary">
+                mdi-facebook
+              </v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon color="primary">
+                mdi-instagram
+              </v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon color="primary">
+                mdi-linkedin
+              </v-icon>
+            </v-btn>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-divider />
+    <v-container>
       <v-subheader>
         <v-icon class="mr-1" color="secondary lighten-3">
-          mdi-heart
+          mdi-update
         </v-icon>
-        3,483 Following
+        Recent
       </v-subheader>
       <common-carousel
-        v-for="i in 6"
-        :key="`content-${i}`"
         :item-width="250"
+        :offset="80"
       >
-        <common-video-player
+        <common-video-card
           v-for="j in 6"
-          :key="`content-${i}-${j}`"
+          :key="`following-${j}`"
           :options="playerOptions"
+          :offset="80"
         />
       </common-carousel>
-    </v-col>
-    <v-col
-      cols="12"
-      lg="3"
-      xl="2"
-    >
-      <v-card>
-        <v-row no-gutters>
-          <v-spacer />
-          <v-subheader class="text-center">
-            ADS
-          </v-subheader>
-          <v-spacer />
-        </v-row>
-        <common-carousel
-          v-for="i in 6"
-          :key="`adv-${i}`"
-          :item-width="250"
-          :max-per-page="1"
-        >
-          <common-video-player
-            v-for="j in 6"
-            :key="`adv-${i}-${j}`"
-            :options="playerOptions"
-          />
-        </common-carousel>
-      </v-card>
-    </v-col>
-  </v-row>
+
+      <v-subheader>
+        <v-icon class="mr-1" color="secondary lighten-3">
+          mdi-playlist-play
+        </v-icon>
+        Playlist
+      </v-subheader>
+      <common-carousel
+        :item-width="250"
+        :offset="80"
+      >
+        <common-video-card
+          v-for="j in 6"
+          :key="`following-${j}`"
+          :options="playerOptions"
+          :offset="80"
+        />
+      </common-carousel>
+
+      <v-subheader>
+        <v-icon class="mr-1" color="secondary lighten-3">
+          mdi-gamepad-variant-outline
+        </v-icon>
+        Gaming
+      </v-subheader>
+      <common-carousel
+        :item-width="250"
+        :offset="80"
+      >
+        <common-video-card
+          v-for="j in 6"
+          :key="`following-${j}`"
+          :options="playerOptions"
+          :offset="80"
+        />
+      </common-carousel>
+    </v-container>
+  </v-content>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      // component options
-      playsinline: true,
-
       // videojs options
       playerOptions: {
-        muted: true,
+        muted: false,
         language: 'en',
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         fluid: true,
+        aspectRatio: '16:9',
+        controls: true,
         sources: [{
           type: 'video/mp4',
-          src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm'
-        }]
+          src: 'http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4'
+        }],
+        poster: '/thumbnails/bunny.png'
       }
     }
   }

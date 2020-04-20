@@ -154,11 +154,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-content>
-      <v-container fluid>
-        <nuxt />
-      </v-container>
-    </v-content>
+    <nuxt />
 
     <v-footer app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
