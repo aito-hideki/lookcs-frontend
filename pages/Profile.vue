@@ -25,16 +25,16 @@
             </div>
           </div>
           <div class="d-flex flex-column align-center mr-4 align-stretch pb-6">
-            <v-btn class="my-1" color="red darken-1">
+            <v-btn class="white--text my-1" color="red darken-1">
               Subscribe
             </v-btn>
-            <v-btn class="my-1" color="red darken-1">
+            <v-btn class="white--text my-1" color="red darken-1">
               Follow
             </v-btn>
-            <v-btn class="my-1" color="red darken-1">
+            <v-btn class="white--text my-1" color="red darken-1">
               Donate
             </v-btn>
-            <v-btn class="my-1" color="red darken-1">
+            <v-btn class="white--text my-1" color="red darken-1">
               Shop
             </v-btn>
           </div>
