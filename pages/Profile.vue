@@ -9,7 +9,11 @@
           lg="4"
         >
           <div class="d-flex flex-column align-center pt-12">
-            <v-badge color="success" icon="mdi-check" overlap>
+            <v-badge
+              color="success"
+              icon="mdi-check"
+              overlap
+            >
               <v-avatar class="d-block d-lg-none mb-2" size="150">
                 <v-img src="/company/bunny.jpg" />
               </v-avatar>

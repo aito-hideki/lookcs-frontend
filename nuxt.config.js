@@ -23,7 +23,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'video.js/dist/video-js.css'
+    'video.js/dist/video-js.css',
+    '~/styles/index.scss'
   ],
   /*
   ** Plugins to load before mounting the App
