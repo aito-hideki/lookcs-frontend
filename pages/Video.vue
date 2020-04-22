@@ -3,6 +3,9 @@
     <div class="video page d-flex align-stretch">
       <div class="page__left-side flex-grow-0 flex-shrink-0 px-11">
         <v-subheader>
+          <v-icon class="mr-1" color="secondary lighten-3">
+            mdi-thumb-up
+          </v-icon>
           Recommended
         </v-subheader>
         <common-video-card
@@ -10,7 +13,7 @@
           :key="`recommended-${i}`"
           class="px-4 pb-2"
           :options="options"
-        />>
+        />
       </div>
 
       <div class="page__content flex-grow-1 flex-shrink-1">
