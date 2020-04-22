@@ -1,8 +1,11 @@
 <template>
   <div class="video-mono">
-    <common-video-player v-bind="$attrs" />
+    <common-video-player
+      :options="options"
+      v-on="$listeners"
+    />
     <div class="video-mono__author mt-2">
-      <div class="d-flex align-stretch mb-2">
+      <div class="d-flex align-stretch my-3">
         <v-avatar size="40" class="mr-4">
           <v-img src="/company/bunny.jpg" />
         </v-avatar>
@@ -19,10 +22,23 @@
   </div>
 </template>
 
-<style lang="scss">
-.video-mono {
-  &__author {
-    height: 80px;
+<script>
+import { computed } from '@vue/composition-api'
+import { playerOptions } from '~/constants'
+
+export default {
+  props: {
+    src: {
+      type: String,
+      default: ''
+    }
+  },
+  setup () {
+    const options = computed(() => playerOptions)
+
+    return {
+      options
+    }
   }
 }
-</style>
+</script>

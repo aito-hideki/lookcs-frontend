@@ -17,6 +17,7 @@
             :key="`following-${j}`"
             :options="playerOptions"
             :offset="80"
+            @click="$nuxt.$router.push({ path: '/video' })"
           />
         </common-carousel>
 

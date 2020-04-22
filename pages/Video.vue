@@ -9,15 +9,15 @@
           v-for="i in 10"
           :key="`recommended-${i}`"
           class="px-4 pb-2"
-          :options="playerOptions"
+          :options="options"
         />>
       </div>
 
       <div class="page__content flex-grow-1 flex-shrink-1">
         <v-container>
-          <common-video-mono
-            :options="playerOptions"
-          />
+          <no-ssr>
+            <common-video-mono src="http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4" />
+          </no-ssr>
 
           <div class="d-flex flex-wrap align-center justify-space-between mt-3">
             <div class="d-flex align-center justify-start">
@@ -211,28 +211,23 @@
 </style>
 
 <script>
+import { ref, computed } from '@vue/composition-api'
+import { playerOptions } from '../constants'
+
 export default {
-  data () {
+  setup () {
+    const stared = ref(false)
+    const follow = ref(false)
+    const flag = ref(false)
+    const comments = ref(false)
+    const options = computed(() => playerOptions)
+
     return {
-      // media options
-      stared: false,
-      follow: false,
-      flag: false,
-      comments: true,
-      // videojs options
-      playerOptions: {
-        muted: false,
-        language: 'en',
-        playbackRates: [0.7, 1.0, 1.5, 2.0],
-        fluid: true,
-        aspectRatio: '16:9',
-        controls: true,
-        sources: [{
-          type: 'video/mp4',
-          src: 'http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4'
-        }],
-        poster: '/thumbnails/bunny.png'
-      }
+      stared,
+      follow,
+      flag,
+      comments,
+      options
     }
   }
 }

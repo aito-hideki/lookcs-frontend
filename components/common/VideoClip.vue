@@ -9,6 +9,7 @@
       v-bind="$attrs"
       cover
       :options="playerOptions"
+      v-on="$listeners"
     />
   </v-hover>
 </template>

@@ -3,6 +3,7 @@
     ref="container"
     v-bind="$attrs"
     class="common-carousel d-flex flex-row align-center justify-center"
+    v-on="$listeners"
   >
     <V-btn
       icon

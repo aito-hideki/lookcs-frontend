@@ -4,6 +4,7 @@
     v-bind="$attrs"
     class="video-player"
     :class="{ cover: cover }"
+    v-on="$listeners"
   />
 </template>
 

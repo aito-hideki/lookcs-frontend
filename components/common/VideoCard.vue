@@ -1,6 +1,9 @@
 <template>
   <div class="video-card">
-    <common-video-clip v-bind="$attrs" />
+    <common-video-clip
+      v-bind="$attrs"
+      v-on="$listeners"
+    />
     <div class="video-card__author mt-2">
       <div class="d-flex align-stretch mb-2">
         <v-avatar size="40" class="mr-4">
