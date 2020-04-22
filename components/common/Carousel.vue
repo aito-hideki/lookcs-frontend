@@ -1,7 +1,6 @@
 <template>
   <div
     ref="container"
-    v-bind="$attrs"
     class="common-carousel d-flex flex-row align-center justify-center"
     v-on="$listeners"
   >
@@ -13,10 +12,7 @@
     >
       <v-icon>mdi-chevron-left</v-icon>
     </V-btn>
-    <div
-      ref="wrapper"
-      class="common-carousel__wrapper"
-    >
+    <div class="common-carousel__wrapper">
       <div
         class="common-carousel__content d-flex flex-row"
         :style="contentStyle"
@@ -67,8 +63,6 @@ const useLayout = (props, { children }) => {
     return cnt > 0 ? cnt : 1
   })
 
-  const wrapper = ref(null)
-
   const itemStyle = computed(() => ({ width: `${100 / (children.value.length || 1)}%` }))
 
   const adjustContainerLayout = () => {
@@ -84,7 +78,6 @@ const useLayout = (props, { children }) => {
 
   return {
     container,
-    wrapper,
     itemStyle,
     adjustContainerLayout,
 

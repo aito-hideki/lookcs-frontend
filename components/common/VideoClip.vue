@@ -4,11 +4,10 @@
     open-delay="100"
   >
     <common-video-player
-      ref="player"
       class="video-clip"
-      v-bind="$attrs"
       cover
       :options="playerOptions"
+      :offset="$attrs.offset"
       v-on="$listeners"
     />
   </v-hover>
@@ -26,7 +25,6 @@ export default {
   },
   setup (props) {
     const hover = ref(false)
-    const player = ref(null)
 
     const playerOptions = computed(() => ({
       ...props.options,
@@ -37,7 +35,6 @@ export default {
 
     return {
       hover,
-      player,
       playerOptions
     }
   }

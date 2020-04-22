@@ -1,7 +1,8 @@
 <template>
   <div class="video-card">
     <common-video-clip
-      v-bind="$attrs"
+      :options="$attrs.options"
+      :offset="$attrs.offset"
       v-on="$listeners"
     />
     <div class="video-card__author mt-2">
