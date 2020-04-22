@@ -36,6 +36,7 @@
             :key="`recommended-${j}`"
             :options="playerOptions"
             :offset="80"
+            @click="$nuxt.$router.push({ path: '/video' })"
           />
         </common-carousel>
 
@@ -54,6 +55,7 @@
             :key="`gaming-${j}`"
             :options="playerOptions"
             :offset="80"
+            @click="$nuxt.$router.push({ path: '/video' })"
           />
         </common-carousel>
       </div>
