@@ -105,56 +105,64 @@
               </v-icon>
             </v-btn>
           </div>
-          <div class="d-flex align-start">
-            <v-avatar size="36" class="my-3 mr-4">
-              <v-img src="/company/bunny.jpg" />
-            </v-avatar>
-            <v-card class="flex-grow-1">
-              <v-card-title class="pa-2 pb-1">
-                <div class="d-flex flex-column justify-space-between">
-                  <div class="caption">
-                    #BigBuckBunny
-                  </div>
-                  <div class="caption d-flex align-center">
-                    <v-btn
-                      small
-                      icon
-                    >
-                      <v-icon
-                        small
-                        color="primary"
-                      >
-                        mdi-thumb-up
-                      </v-icon>
-                    </v-btn>
-                    <span class="mr-2">2.2 K</span>
-                    <v-divider class="my-1" vertical />
-                    <v-btn
-                      small
-                      icon
-                    >
-                      <v-icon
-                        small
-                        color="info lighten-1"
-                      >
-                        mdi-message-reply-text
-                      </v-icon>
-                    </v-btn>
-                    <span :style="{ width: '60px' }">3 Replies</span>
-                  </div>
-                </div>
-              </v-card-title>
-              <v-divider />
-              <v-card-text class="pa-2 pt-1">
-                What's up peeps?
-                <v-icon color="yellow darken-2">
-                  mdi-emoticon-excited
-                </v-icon><br>
-                I can't hear you any more.<br>
-                Anybody there?
-              </v-card-text>
-            </v-card>
-          </div>
+          <v-fade-transition mode="out-in">
+            <div v-if="comments">
+              <div
+                v-for="i in 7"
+                :key="i"
+                class="d-flex align-start mb-3"
+              >
+                <v-avatar size="36" class="my-3 mr-4">
+                  <v-img src="/company/bunny.jpg" />
+                </v-avatar>
+                <v-card class="flex-grow-1">
+                  <v-card-title class="pa-2 pb-1">
+                    <div class="d-flex flex-column justify-space-between">
+                      <div class="caption">
+                        #BigBuckBunny
+                      </div>
+                      <div class="caption d-flex align-center">
+                        <v-btn
+                          small
+                          icon
+                        >
+                          <v-icon
+                            small
+                            color="primary"
+                          >
+                            mdi-thumb-up
+                          </v-icon>
+                        </v-btn>
+                        <span class="mr-2">2.2 K</span>
+                        <v-divider class="my-1" vertical />
+                        <v-btn
+                          small
+                          icon
+                        >
+                          <v-icon
+                            small
+                            color="info lighten-1"
+                          >
+                            mdi-message-reply-text
+                          </v-icon>
+                        </v-btn>
+                        <span :style="{ width: '60px' }">3 Replies</span>
+                      </div>
+                    </div>
+                  </v-card-title>
+                  <v-divider />
+                  <v-card-text class="pa-2 pt-1">
+                    What's up peeps?
+                    <v-icon color="yellow darken-2">
+                      mdi-emoticon-excited
+                    </v-icon><br>
+                    I can't hear you any more.<br>
+                    Anybody there?
+                  </v-card-text>
+                </v-card>
+              </div>
+            </div>
+          </v-fade-transition>
         </v-container>
       </div>
 
