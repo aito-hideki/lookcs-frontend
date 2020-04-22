@@ -36,3 +36,9 @@
   user-select: none;
   cursor: pointer;
 }
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
