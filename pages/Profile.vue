@@ -93,6 +93,17 @@
     </v-container>
     <v-divider />
     <v-container>
+      <v-tabs centered>
+        <v-tab>
+          Home
+        </v-tab>
+        <v-tab>
+          Videos
+        </v-tab>
+        <v-tab>
+          Playlist
+        </v-tab>
+      </v-tabs>
       <v-subheader>
         <v-icon class="mr-1" color="secondary lighten-3">
           mdi-update
