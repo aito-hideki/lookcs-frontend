@@ -27,6 +27,15 @@
 
       <v-spacer />
 
+      <v-text-field
+        outlined
+        dense
+        rounded
+        hide-details
+      />
+
+      <v-spacer />
+
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn

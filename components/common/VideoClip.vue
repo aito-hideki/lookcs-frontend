@@ -48,9 +48,5 @@ export default {
   .video-js {
     pointer-events: none;
   }
-
-  .vjs-poster {
-    background-size: cover;
-  }
 }
 </style>

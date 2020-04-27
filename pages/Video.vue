@@ -8,10 +8,10 @@
           </v-icon>
           Recommended
         </v-subheader>
-        <common-video-card
+        <common-video-clip
           v-for="i in 10"
           :key="`recommended-${i}`"
-          class="px-4 pb-2"
+          class="px-4 pb-4"
           :options="options"
         />
       </div>
@@ -60,13 +60,47 @@
               </v-btn>
             </div>
 
-            <div class="d-flex align-center justify-end">
+            <div class="d-flex flex-row-reverse align-center">
               <v-btn
-                class="mr-2"
+                v-if="support"
+                color="success"
+                rounded
+                @click="support = !support"
+              >
+                Support
+              </v-btn>
+
+              <v-btn
+                v-if="!support"
+                class="ml-2"
+                icon
+                @click="support = !support"
+              >
+                <v-icon>mdi-chevron-right</v-icon>
+              </v-btn>
+              <v-btn
+                v-if="!support"
+                class="ml-2"
                 color="success"
                 rounded
               >
-                Support
+                Subscribe
+              </v-btn>
+              <v-btn
+                v-if="!support"
+                class="ml-2"
+                color="info lighten-1"
+                icon
+              >
+                <v-icon>mdi-shopping</v-icon>
+              </v-btn>
+              <v-btn
+                v-if="!support"
+                class="ml-2"
+                color="warning lighten-1"
+                icon
+              >
+                <v-icon>mdi-bitcoin</v-icon>
               </v-btn>
             </div>
           </div>
@@ -224,13 +258,15 @@ export default {
     const flag = ref(false)
     const comments = ref(false)
     const options = computed(() => playerOptions)
+    const support = ref(true)
 
     return {
       stared,
       follow,
       flag,
       comments,
-      options
+      options,
+      support
     }
   }
 }
