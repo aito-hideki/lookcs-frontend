@@ -2,6 +2,15 @@
   transition: background-color .2s;
 }
 
+.v-application.theme--light {
+  header.v-toolbar {
+    background-color: #bdf !important;
+  }
+  main.v-content {
+    background-color: #def;
+  }
+}
+
 .vjs-poster {
   background-size: cover;
 }
