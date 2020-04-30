@@ -7,11 +7,20 @@
     <div class="video-mono__author mt-2">
       <div class="d-flex align-stretch my-3">
         <v-avatar size="40" class="mr-4">
-          <v-img src="/company/bunny.jpg" />
+          <v-img src="/company/tomjerry.jpg" />
         </v-avatar>
         <div class="d-flex flex-column justify-center">
           <div class="title">
             UnrealEntGaming
+          </div>
+        </div>
+        <v-spacer />
+        <div class="d-flex flex-column justify-center text-right">
+          <div class="subtitle-2">
+            10,151 Views
+          </div>
+          <div class="caption">
+            3 months ago
           </div>
         </div>
       </div>

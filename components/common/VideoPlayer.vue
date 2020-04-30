@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss">
 .video-player {
-  min-width: 150px;
+  min-width: 120px;
 
   > .video-js {
     width: 100% !important;

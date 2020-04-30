@@ -8,7 +8,7 @@
     <div class="video-card__author mt-2">
       <div class="d-flex align-stretch mb-2">
         <v-avatar size="40" class="mr-4">
-          <v-img src="/company/bunny.jpg" />
+          <v-img src="/company/tomjerry.jpg" />
         </v-avatar>
         <div class="d-flex flex-column justify-space-between">
           <div class="caption font-weight-bold">

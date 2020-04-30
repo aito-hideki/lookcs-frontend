@@ -15,9 +15,9 @@
           <common-video-card
             v-for="j in 6"
             :key="`following-${j}`"
-            :options="playerOptions"
+            :options="thumbnailOptions"
             :offset="80"
-            @click="$nuxt.$router.push({ path: '/video' })"
+            @click="$nuxt.$router.push('/video/1')"
           />
         </common-carousel>
 
@@ -34,9 +34,9 @@
           <common-video-card
             v-for="j in 6"
             :key="`recommended-${j}`"
-            :options="playerOptions"
+            :options="thumbnailOptions"
             :offset="80"
-            @click="$nuxt.$router.push({ path: '/video' })"
+            @click="$nuxt.$router.push('/video/1')"
           />
         </common-carousel>
 
@@ -53,9 +53,9 @@
           <common-video-card
             v-for="j in 6"
             :key="`gaming-${j}`"
-            :options="playerOptions"
+            :options="thumbnailOptions"
             :offset="80"
-            @click="$nuxt.$router.push({ path: '/video' })"
+            @click="$nuxt.$router.push('/video/1')"
           />
         </common-carousel>
       </div>
@@ -80,7 +80,7 @@
             <common-video-clip
               v-for="j in 6"
               :key="`adv-${i}-${j}`"
-              :options="playerOptions"
+              :options="thumbnailOptions"
             />
           </common-carousel>
         </v-card>
@@ -90,23 +90,12 @@
 </template>
 
 <script>
+import { thumbnailOptions } from '~/constants'
 export default {
   data () {
     return {
       // videojs options
-      playerOptions: {
-        muted: false,
-        language: 'en',
-        playbackRates: [0.7, 1.0, 1.5, 2.0],
-        fluid: true,
-        aspectRatio: '16:9',
-        controls: true,
-        sources: [{
-          type: 'video/mp4',
-          src: 'http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4'
-        }],
-        poster: '/thumbnails/bunny.png'
-      }
+      thumbnailOptions
     }
   }
 }

@@ -32,6 +32,7 @@
         dense
         rounded
         hide-details
+        append-icon="mdi-arrow-right"
       />
 
       <v-spacer />

@@ -15,10 +15,10 @@
               overlap
             >
               <v-avatar class="d-block d-lg-none mb-2" size="150">
-                <v-img src="/company/bunny.jpg" />
+                <v-img src="/company/tomjerry.jpg" />
               </v-avatar>
               <v-avatar class="d-none d-lg-block mb-2" size="200">
-                <v-img src="/company/bunny.jpg" />
+                <v-img src="/company/tomjerry.jpg" />
               </v-avatar>
             </v-badge>
             <div class="title">
@@ -50,7 +50,7 @@
           md="6"
           lg="4"
         >
-          <common-video-player :options="playerOptions" />
+          <common-video-player :options="thumbnailOptions" />
         </v-col>
         <v-col
           class="d-flex flex-row align-stretch order-1 order-sm-0"
@@ -95,12 +95,21 @@
     <v-container>
       <v-tabs centered>
         <v-tab>
+          <v-icon class="mr-2">
+            mdi-home
+          </v-icon>
           Home
         </v-tab>
         <v-tab>
+          <v-icon class="mr-2">
+            mdi-video
+          </v-icon>
           Videos
         </v-tab>
         <v-tab>
+          <v-icon class="mr-2">
+            mdi-playlist-play
+          </v-icon>
           Playlist
         </v-tab>
       </v-tabs>
@@ -117,7 +126,7 @@
         <common-video-card
           v-for="j in 6"
           :key="`following-${j}`"
-          :options="playerOptions"
+          :options="thumbnailOptions"
           :offset="80"
         />
       </common-carousel>
@@ -135,7 +144,7 @@
         <common-video-card
           v-for="j in 6"
           :key="`following-${j}`"
-          :options="playerOptions"
+          :options="thumbnailOptions"
           :offset="80"
         />
       </common-carousel>
@@ -153,7 +162,7 @@
         <common-video-card
           v-for="j in 6"
           :key="`following-${j}`"
-          :options="playerOptions"
+          :options="thumbnailOptions"
           :offset="80"
         />
       </common-carousel>
@@ -162,23 +171,13 @@
 </template>
 
 <script>
+import { thumbnailOptions } from '@/constants'
+
 export default {
   data () {
     return {
       // videojs options
-      playerOptions: {
-        muted: false,
-        language: 'en',
-        playbackRates: [0.7, 1.0, 1.5, 2.0],
-        fluid: true,
-        aspectRatio: '16:9',
-        controls: true,
-        sources: [{
-          type: 'video/mp4',
-          src: 'http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4'
-        }],
-        poster: '/thumbnails/bunny.png'
-      }
+      thumbnailOptions
     }
   }
 }

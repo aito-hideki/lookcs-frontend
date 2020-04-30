@@ -1,20 +1,26 @@
 <template>
-  <v-hover
-    v-model="hover"
-    open-delay="100"
+  <v-card
+    class="video-clip"
+    @mouseenter="hover = true"
+    @mouseleave="hover = false"
   >
+    <v-img
+      :src="playerOptions.poster || ''"
+      :aspect-ratio="16/9"
+    />
     <common-video-player
+      v-if="hover"
       class="video-clip"
       cover
       :options="playerOptions"
       :offset="$attrs.offset"
       v-on="$listeners"
     />
-  </v-hover>
+  </v-card>
 </template>
 
 <script>
-import { ref, computed } from '@vue/composition-api'
+import { computed, ref } from '@vue/composition-api'
 
 export default {
   props: {
@@ -25,12 +31,12 @@ export default {
   },
   setup (props) {
     const hover = ref(false)
-
     const playerOptions = computed(() => ({
       ...props.options,
       controls: false,
       muted: true,
-      autoplay: hover.value
+      autoplay: true,
+      loop: true
     }))
 
     return {
@@ -47,6 +53,19 @@ export default {
 
   .video-js {
     pointer-events: none;
+  }
+
+  .video-player {
+    display: none;
+  }
+
+  &:hover {
+    .v-image {
+      display: none;
+    }
+    .video-player {
+      display: block;
+    }
   }
 }
 </style>
