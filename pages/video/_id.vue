@@ -122,11 +122,13 @@
             min-height="250"
           >
             <v-card-text>
-              <h3><p>
-                <span class="tag-link">#Offroad</span>
-                <span class="tag-link">#Dirtbike</span>
-                <span class="tag-link">#CaliOffRoad</span>
-              </p></h3>
+              <h3>
+                <p>
+                  <span class="tag-link">#Offroad</span>
+                  <span class="tag-link">#Dirtbike</span>
+                  <span class="tag-link">#CaliOffRoad</span>
+                </p>
+              </h3>
               <p>
                 For my first over Patreon meet-up in the UK we hit up Dalby Forest.
                 I was really Suprised how long this loop got and how many awesome little bits and pieces it had for us.
