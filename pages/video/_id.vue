@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <div class="video page d-flex align-stretch">
-      <div class="page__left-side flex-grow-0 flex-shrink-0 px-2">
+      <div class="page__left-side flex-grow-0 flex-shrink-0 px-2 d-none d-md-block">
         <v-subheader>
           <v-icon class="mr-1" color="secondary lighten-3">
             mdi-thumb-up
