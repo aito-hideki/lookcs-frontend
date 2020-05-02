@@ -15,6 +15,15 @@
   background-size: cover;
 }
 
+.tag-link {
+  &:hover {
+    cursor: pointer;
+    user-select: none;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
 // Scrollbar customization
 ::-webkit-scrollbar {
   background: #fff8;

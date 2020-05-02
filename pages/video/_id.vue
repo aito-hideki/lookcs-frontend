@@ -20,15 +20,7 @@
           />
           <div class="video-tip ml-2 flex-grow-1 flex-shrink-1 body-2 d-flex flex-column justify-center">
             <div>
-              <a>#apple</a>
-              <a>#apple</a>
-              <a>#apple</a>
-              <a>#apple</a>
-              <a>#apple</a>
-              <a>#apple</a>
-              <a>#apple</a>
-              <a>#apple</a>
-              <a>#apple</a>
+              <span class="tag-link">#apple</span>
             </div>
             <div>Big Buck Bunny</div>
             <div>Channel2</div>
@@ -130,7 +122,11 @@
             min-height="250"
           >
             <v-card-text>
-              <h3><p>#Offroad #Dirtbike #CaliOffRoad</p></h3>
+              <h3><p>
+                <span class="tag-link">#Offroad</span>
+                <span class="tag-link">#Dirtbike</span>
+                <span class="tag-link">#CaliOffRoad</span>
+              </p></h3>
               <p>
                 For my first over Patreon meet-up in the UK we hit up Dalby Forest.
                 I was really Suprised how long this loop got and how many awesome little bits and pieces it had for us.
@@ -233,15 +229,29 @@
             v-for="(item, i) in 10"
             :key="`expansion-${i}`"
           >
-            <v-expansion-panel-header>
-              <v-avatar class="flex-grow-0 mr-4" size="40">
-                <v-img src="/company/tomjerry.jpg" />
-              </v-avatar>
+            <v-expansion-panel-header class="body-2">
+              <v-badge
+                class="flex-grow-0 mr-2"
+                dot
+                overlap
+                bordered
+                color="success"
+                offset-x="10"
+                offset-y="10"
+              >
+                <v-avatar size="40">
+                  <v-img src="/company/tomjerry.jpg" />
+                </v-avatar>
+              </v-badge>
               <span
                 class="text-truncate flex-shrink-0"
                 :style="{ 'max-width': '135px' }"
               >
                 AbbySaySo
+              </span>
+              <v-spacer />
+              <span class="warning--text">
+                $ 100
               </span>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
@@ -301,16 +311,6 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       width: 150px;
-      > a {
-        color: white;
-        .v-application.theme--light & {
-          color: black;
-        }
-        &:hover {
-          text-decoration: underline;
-          font-weight: bold;
-        }
-      }
     }
   }
 }

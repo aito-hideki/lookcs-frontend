@@ -16,8 +16,8 @@
         </div>
         <v-spacer />
         <div class="d-flex flex-column justify-center text-right">
-          <div class="subtitle-2">
-            10,151 Views
+          <div class="subtitle-1">
+            <b>10,151</b> Views
           </div>
           <div class="caption">
             3 months ago

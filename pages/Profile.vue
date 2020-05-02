@@ -13,6 +13,9 @@
               color="success"
               icon="mdi-check"
               overlap
+              bordered
+              :offset-x="$vuetify.breakpoint.lgAndUp ? 40 : 30"
+              :offset-y="$vuetify.breakpoint.lgAndUp ? 40 : 30"
             >
               <v-avatar class="d-block d-lg-none mb-2" size="150">
                 <v-img src="/company/tomjerry.jpg" />
