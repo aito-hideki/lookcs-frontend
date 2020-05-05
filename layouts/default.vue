@@ -92,7 +92,7 @@
 
         <v-list class="mt-12" width="200">
           <v-list-item
-            to="/profile"
+            to="/profile/3"
             router
             exact
           >
@@ -122,7 +122,7 @@
     >
       <v-list flat>
         <v-list-item
-          to="/profile"
+          to="/profile/3"
           router
           exact
         >

@@ -4,15 +4,21 @@
 
 .v-application.theme--light {
   header.v-toolbar {
-    background-color: #bdf !important;
+    background-color: #d0e7ff !important;
   }
   main.v-content {
-    background-color: #def;
+    background-color: #dfefff;
   }
 }
 
 .vjs-poster {
   background-size: cover;
+}
+
+.vjs-big-play-button {
+  top: 50% !important;
+  lefT: 50% !important;
+  transform: translate(-50%, -50%);
 }
 
 .tag-link {
@@ -22,6 +28,15 @@
     text-decoration: underline;
     font-weight: bold;
   }
+}
+
+.tapable {
+  cursor: pointer;
+  user-select: none;
+}
+
+span.v-badge__badge {
+  transform: scale(1.5);
 }
 
 // Scrollbar customization

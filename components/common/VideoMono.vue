@@ -4,14 +4,17 @@
       :options="options"
       v-on="$listeners"
     />
-    <div class="video-mono__author mt-2">
+    <div
+      class="video-mono__author mt-2"
+      :class="{ 'd-none': hideDetails }"
+    >
       <div class="d-flex align-stretch my-3">
         <v-avatar size="40" class="mr-4">
-          <v-img src="/company/tomjerry.jpg" />
+          <v-img :src="creator.avatar" />
         </v-avatar>
         <div class="d-flex flex-column justify-center">
           <div class="title">
-            UnrealEntGaming
+            {{ creator.name }}
           </div>
         </div>
         <v-spacer />
@@ -25,7 +28,7 @@
         </div>
       </div>
       <div class="headline">
-        Driving Offroad Through California (We Found it!)
+        {{ content.title }}
       </div>
     </div>
   </div>
@@ -33,20 +36,31 @@
 
 <script>
 import { computed } from '@vue/composition-api'
-import { playerOptions } from '~/constants'
+import { playerOptions, creators } from '@/constants'
 
 export default {
   props: {
-    src: {
-      type: String,
-      default: ''
+    content: {
+      type: Object,
+      default: () => ({})
+    },
+    hideDetails: {
+      type: Boolean,
+      default: false
     }
   },
-  setup () {
-    const options = computed(() => playerOptions)
+  setup (props) {
+    const options = computed(() => ({
+      ...playerOptions,
+      autoplay: true,
+      poster: props.content.poster
+    }))
+
+    const creator = computed(() => creators[props.content.author])
 
     return {
-      options
+      options,
+      creator
     }
   }
 }

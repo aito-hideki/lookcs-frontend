@@ -21,10 +21,11 @@
 
 <script>
 import { computed, ref } from '@vue/composition-api'
+import { thumbnailOptions } from '@/constants'
 
 export default {
   props: {
-    options: {
+    content: {
       type: Object,
       default: () => ({})
     }
@@ -32,11 +33,16 @@ export default {
   setup (props) {
     const hover = ref(false)
     const playerOptions = computed(() => ({
-      ...props.options,
+      ...thumbnailOptions,
       controls: false,
       muted: true,
       autoplay: true,
-      loop: true
+      loop: true,
+      sources: [{
+        type: 'video/mp4',
+        src: props.content.thumbnail
+      }],
+      poster: props.content.poster
     }))
 
     return {

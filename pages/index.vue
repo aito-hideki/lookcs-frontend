@@ -2,62 +2,29 @@
   <v-content>
     <v-container class="home" fluid>
       <div class="home__content flex-grow-1 flex-shrink-1">
-        <v-subheader>
-          <v-icon class="mr-1" color="secondary lighten-3">
-            mdi-heart
-          </v-icon>
-          Following
-        </v-subheader>
-        <common-carousel
-          :item-width="250"
-          :offset="80"
+        <div
+          v-for="(channel, channelIdx) in channels"
+          :key="`channel-${channelIdx}`"
         >
-          <common-video-card
-            v-for="j in 6"
-            :key="`following-${j}`"
-            :options="thumbnailOptions"
+          <v-subheader>
+            <v-icon class="mr-1" color="secondary lighten-3">
+              {{ channel.icon }}
+            </v-icon>
+            {{ channel.name }}
+          </v-subheader>
+          <common-carousel
+            :item-width="250"
             :offset="80"
-            @click="$nuxt.$router.push('/video/1')"
-          />
-        </common-carousel>
-
-        <v-subheader>
-          <v-icon class="mr-1" color="secondary lighten-3">
-            mdi-thumb-up
-          </v-icon>
-          Recommended
-        </v-subheader>
-        <common-carousel
-          :item-width="250"
-          :offset="80"
-        >
-          <common-video-card
-            v-for="j in 6"
-            :key="`recommended-${j}`"
-            :options="thumbnailOptions"
-            :offset="80"
-            @click="$nuxt.$router.push('/video/1')"
-          />
-        </common-carousel>
-
-        <v-subheader>
-          <v-icon class="mr-1" color="secondary lighten-3">
-            mdi-gamepad-variant
-          </v-icon>
-          Gaming
-        </v-subheader>
-        <common-carousel
-          :item-width="250"
-          :offset="80"
-        >
-          <common-video-card
-            v-for="j in 6"
-            :key="`gaming-${j}`"
-            :options="thumbnailOptions"
-            :offset="80"
-            @click="$nuxt.$router.push('/video/1')"
-          />
-        </common-carousel>
+          >
+            <common-video-card
+              v-for="(content, contentIdx) in channel.contents"
+              :key="`channel-${channelIdx}-${contentIdx}`"
+              :content="content"
+              :offset="80"
+              @click="$nuxt.$router.push(`/video/${content.id}`)"
+            />
+          </common-carousel>
+        </div>
       </div>
       <div class="home__ads d-none d-md-block flex-grow-0 flex-shrink-0">
         <v-card
@@ -67,21 +34,51 @@
           <v-row no-gutters>
             <v-spacer />
             <v-subheader class="text-center">
+              Sweepstakes
+            </v-subheader>
+            <v-spacer />
+          </v-row>
+          <common-carousel
+            :item-width="250"
+            :max-per-page="1"
+            :offset="40"
+          >
+            <div>
+              <common-video-clip :content="playlist[0]" />
+              <div class="caption font-weight-bold">
+                This is Adv
+              </div>
+              <div class="caption font-weight-bold">
+                Aito Hideki
+              </div>
+            </div>
+          </common-carousel>
+          <v-row no-gutters>
+            <v-spacer />
+            <v-subheader class="text-center">
               ADS
             </v-subheader>
             <v-spacer />
           </v-row>
           <common-carousel
-            v-for="i in 10"
+            v-for="i in 6"
             :key="`adv-${i}`"
             :item-width="250"
             :max-per-page="1"
+            :offset="40"
           >
-            <common-video-clip
-              v-for="j in 6"
+            <div
+              v-for="j in 4"
               :key="`adv-${i}-${j}`"
-              :options="thumbnailOptions"
-            />
+            >
+              <common-video-clip :content="playlist[i * 4 + j]" />
+              <div class="caption font-weight-bold">
+                This is Adv
+              </div>
+              <div class="caption font-weight-bold">
+                Aito Hideki
+              </div>
+            </div>
           </common-carousel>
         </v-card>
       </div>
@@ -90,10 +87,13 @@
 </template>
 
 <script>
-import { thumbnailOptions } from '~/constants'
+import { thumbnailOptions, channels, playlist } from '~/constants'
+
 export default {
   data () {
     return {
+      channels,
+      playlist,
       // videojs options
       thumbnailOptions
     }

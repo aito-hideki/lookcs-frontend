@@ -9,21 +9,21 @@
           Recommended
         </v-subheader>
         <div
-          v-for="i in 10"
+          v-for="(content, i) in recommended"
           :key="`recommended-${i}`"
           class="d-flex flex-nowrap mb-3"
         >
           <common-video-clip
-            :options="options"
+            :content="content"
             class="flex-grow-0 flex-shrink-0"
             :style="{ width: '135px' }"
           />
           <div class="video-tip ml-2 flex-grow-1 flex-shrink-1 body-2 d-flex flex-column justify-center">
             <div>
-              <span class="tag-link">#apple</span>
+              <span class="tag-link">#{{ content.tags[0] }}</span>
             </div>
-            <div>Big Buck Bunny</div>
-            <div>Channel2</div>
+            <div>{{ content.title }}</div>
+            <div>{{ creators[content.author].name }}</div>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
       <div class="page__content flex-grow-1 flex-shrink-1">
         <v-container>
           <no-ssr>
-            <common-video-mono src="videos/tomjerry-thumbnail.mp4" />
+            <common-video-mono :content="video" />
           </no-ssr>
 
           <div class="d-flex flex-wrap align-center justify-space-between mt-3">
@@ -124,9 +124,13 @@
             <v-card-text>
               <h3>
                 <p>
-                  <span class="tag-link">#Offroad</span>
-                  <span class="tag-link">#Dirtbike</span>
-                  <span class="tag-link">#CaliOffRoad</span>
+                  <span
+                    v-for="(tag, tagIdx) in video.tags"
+                    :key="`tag-${tagIdx}`"
+                    class="tag-link"
+                  >
+                    #{{ tag }}
+                  </span>
                 </p>
               </h3>
               <p>
@@ -274,14 +278,14 @@
 
 <script>
 import { ref, computed } from '@vue/composition-api'
-import { thumbnailOptions } from '@/constants'
+import { thumbnailOptions, playlist, channels, creators } from '@/constants'
 
 export default {
   validate ({ params, redirect }) {
     if (/^\d+$/.test(params.id)) { return true }
     redirect('/')
   },
-  setup () {
+  setup (props, ctx) {
     const stared = ref(false)
     const follow = ref(false)
     const flag = ref(false)
@@ -289,13 +293,19 @@ export default {
     const options = computed(() => thumbnailOptions)
     const support = ref(true)
 
+    const video = computed(() => playlist[ctx.root.$route.params.id])
+    const recommended = computed(() => [...channels[1].contents, ...channels[2].contents])
+
     return {
       stared,
       follow,
       flag,
       comments,
       options,
-      support
+      support,
+      video,
+      creators,
+      recommended
     }
   }
 }
