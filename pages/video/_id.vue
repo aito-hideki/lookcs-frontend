@@ -216,13 +216,22 @@
       </div>
 
       <div class="page__right-side flex-grow-0 flex-shrink-0 pa-4 d-none d-lg-block">
+        <v-card
+          v-if="!video.donations.length"
+          height="200px"
+        >
+          <v-card-text>
+            No donations so far.
+          </v-card-text>
+        </v-card>
         <v-expansion-panels
+          v-else
           :value="0"
           :accordion="true"
           :hover="true"
         >
           <v-expansion-panel
-            v-for="(item, i) in 10"
+            v-for="(donation, i) in video.donations"
             :key="`expansion-${i}`"
           >
             <v-expansion-panel-header class="body-2">
@@ -236,24 +245,24 @@
                 offset-y="10"
               >
                 <v-avatar size="40">
-                  <v-img src="/company/tomjerry.jpg" />
+                  <v-img :src="creators[donation.donator].avatar" />
                 </v-avatar>
               </v-badge>
               <span
-                class="text-truncate flex-shrink-0"
+                class="name-limit text-truncate flex-shrink-0"
                 :style="{ 'max-width': '135px' }"
               >
-                AbbySaySo
+                {{ creators[donation.donator].name }}
               </span>
               <v-spacer />
               <span class="warning--text">
-                $ 100
+                ${{ donation.amount }}
               </span>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <div class="text-center my-4">
                 <v-avatar class="flex-grow-0" size="150">
-                  <v-img src="/company/tomjerry.jpg" />
+                  <v-img :src="creators[donation.donator].avatar" />
                 </v-avatar>
               </div>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -314,6 +323,13 @@ export default {
       text-overflow: ellipsis;
       width: 150px;
     }
+  }
+
+  .name-limit {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 80px;
+    text-overflow: ellipsis;
   }
 }
 </style>

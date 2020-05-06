@@ -29,6 +29,22 @@ export const thumbnailOptions = {
   poster: '/thumbnails/tomjerry.jpg'
 }
 
+const dmounts = [
+  5,
+  10,
+  20,
+  25,
+  50,
+  75,
+  100,
+  150,
+  200,
+  250,
+  300,
+  350,
+  500
+]
+
 export const creators = [
   {
     name: 'Panda\'s channel',
@@ -71,6 +87,19 @@ export const creators = [
     media: 6
   }
 ]
+
+const getRandomDonations = () => {
+  const cnt = Math.floor(Math.random() * 5)
+  const dns = []
+  for (let i = 0; i < cnt; i++) {
+    dns.push({
+      donator: Math.floor(Math.random() * creators.length),
+      amount: dmounts[Math.floor(Math.random() * dmounts.length)]
+    })
+  }
+
+  return dns
+}
 
 const tags = [
   'bitcoin',
@@ -156,7 +185,8 @@ for (let i = 0; i < 28; i++) {
       title: `Title of the Movie ${i + 1}`,
       thumbnail: `/thumbnails/thumbnail (${i + 1}).mp4`,
       poster: `/thumbnails/thumbnail (${i + 1}).jpg`,
-      author: Math.floor(Math.random() * creators.length)
+      author: Math.floor(Math.random() * creators.length),
+      donations: i === 0 ? [] : getRandomDonations()
     }
   )
 }
