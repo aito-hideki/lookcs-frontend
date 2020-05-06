@@ -83,42 +83,22 @@
 
             <div class="d-flex flex-row-reverse align-center">
               <v-btn
-                v-if="support"
-                color="success"
-                rounded
-                @click="support = !support"
-              >
-                Support
-              </v-btn>
-
-              <v-btn
-                v-if="!support"
-                class="ml-2"
-                icon
-                @click="support = !support"
-              >
-                <v-icon>mdi-chevron-right</v-icon>
-              </v-btn>
-              <v-btn
-                v-if="!support"
-                class="ml-2"
                 color="success"
                 rounded
               >
                 Subscribe
               </v-btn>
               <v-btn
-                v-if="!support"
-                class="ml-2"
+                class="ml-n3"
                 color="info lighten-1"
+                x-large
                 icon
               >
                 <v-icon>mdi-shopping</v-icon>
               </v-btn>
               <v-btn
-                v-if="!support"
-                class="ml-2"
                 color="warning lighten-1"
+                x-large
                 icon
               >
                 <v-icon>mdi-bitcoin</v-icon>
@@ -301,7 +281,6 @@ export default {
     const registered = ref(false)
     const comments = ref(false)
     const options = computed(() => thumbnailOptions)
-    const support = ref(true)
 
     const video = computed(() => playlist[ctx.root.$route.params.id])
     const recommended = computed(() => [...channels[1].contents, ...channels[2].contents])
@@ -313,7 +292,6 @@ export default {
       registered,
       comments,
       options,
-      support,
       video,
       creators,
       recommended

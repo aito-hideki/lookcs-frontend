@@ -33,53 +33,51 @@
         >
           <v-row no-gutters>
             <v-spacer />
-            <v-subheader class="text-center">
+            <v-subheader class="text-center font-weight-bold">
               Sweepstakes
             </v-subheader>
             <v-spacer />
           </v-row>
           <div class="py-2 pl-11 d-flex flex-row flex-nowrap align-center">
             <div class="flex-grow-1">
-              <common-video-clip
-                :content="playlist[0]"
-              />
-              <div class="caption font-weight-bold mt-2">
-                This is Adv
+              <common-video-clip :content="ads[0]" />
+              <div class="limit caption font-weight-bold mt-2">
+                {{ ads[0].title }}
               </div>
               <div class="caption font-weight-bold">
-                Aito Hideki
+                {{ ads[0].advertiser }}
               </div>
             </div>
             <div class="mb-12">
-              <v-icon class="ma-3">
+              <v-icon class="mr-2 ml-4">
                 mdi-gift
               </v-icon>
             </div>
           </div>
           <v-row no-gutters>
             <v-spacer />
-            <v-subheader class="text-center">
+            <v-subheader class="text-center font-weight-bold">
               ADS
             </v-subheader>
             <v-spacer />
           </v-row>
           <common-carousel
-            v-for="i in 6"
-            :key="`adv-${i}`"
+            v-for="(section, si) in advSections"
+            :key="`adv-${si}`"
             :item-width="250"
             :max-per-page="1"
             :offset="40"
           >
             <div
-              v-for="j in 4"
-              :key="`adv-${i}-${j}`"
+              v-for="(ad, sj) in section"
+              :key="`adv-${si}-${sj}`"
             >
-              <common-video-clip :content="playlist[i * 4 + j]" />
-              <div class="caption font-weight-bold">
-                This is Adv
+              <common-video-clip :content="ad" />
+              <div class="limit caption font-weight-bold">
+                {{ ad.title }}
               </div>
               <div class="caption font-weight-bold">
-                Aito Hideki
+                {{ ad.advertiser }}
               </div>
             </div>
           </common-carousel>
@@ -90,7 +88,7 @@
 </template>
 
 <script>
-import { thumbnailOptions, channels, playlist } from '~/constants'
+import { thumbnailOptions, channels, playlist, advSections, ads } from '~/constants'
 
 export default {
   data () {
@@ -98,7 +96,9 @@ export default {
       channels,
       playlist,
       // videojs options
-      thumbnailOptions
+      thumbnailOptions,
+      ads,
+      advSections
     }
   }
 }
@@ -125,5 +125,12 @@ export default {
       max-width: calc(100% - 300px);
     }
   }
+}
+
+.limit {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 176px;
+  text-overflow: ellipsis;
 }
 </style>

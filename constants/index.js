@@ -88,7 +88,7 @@ const tags = [
 ]
 
 export const playlist = []
-export const advs = [
+export const ads = [
   {
     title: 'Bisimoto\'s 1,000 HP HONDA Civic Wagon',
     advertiser: 'Honda Enterprise'
@@ -106,18 +106,37 @@ export const advs = [
     advertiser: 'Xbox Games'
   },
   {
-    title: 'Bisimoto\'s 1,000 HP HONDA Civic Wagon',
-    advertiser: 'Honda Enterprise'
+    title: 'Enjoy your day!',
+    advertiser: 'Dancing Club'
   },
   {
-    title: 'Bisimoto\'s 1,000 HP HONDA Civic Wagon',
-    advertiser: 'Honda Enterprise'
+    title: 'English as a Second Language',
+    advertiser: 'ESL Organizations'
   },
   {
-    title: 'Bisimoto\'s 1,000 HP HONDA Civic Wagon',
-    advertiser: 'Honda Enterprise'
+    title: 'You can\'t run from us Forever',
+    advertiser: 'McDonalds'
   }
-]
+].map((adv, i) => ({
+  ...adv,
+  thumbnail: `/ads/thumbnail (${i + 1}).mp4`,
+  poster: `/ads/thumbnail (${i + 1}).jpg`
+}))
+
+export const advSections = []
+
+for (let adi = 1; adi < 7; adi++) {
+  let section = [ads[adi]]
+
+  for (let adj = 0; adj < 3; adj++) {
+    const ad = ads[Math.floor(Math.random() * ads.length)]
+    if (!section.includes(ad)) {
+      section = [...section, ad]
+    }
+  }
+
+  advSections.push(section)
+}
 
 for (let i = 0; i < 28; i++) {
   let tag = []
