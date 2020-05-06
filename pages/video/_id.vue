@@ -255,7 +255,7 @@
                 {{ creators[donation.donator].name }}
               </span>
               <v-spacer />
-              <span :class="donation.color">
+              <span :class="[donation.color, 'font-weight-bold']">
                 ${{ donation.amount }}
               </span>
             </v-expansion-panel-header>
