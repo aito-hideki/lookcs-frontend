@@ -38,21 +38,24 @@
             </v-subheader>
             <v-spacer />
           </v-row>
-          <common-carousel
-            :item-width="250"
-            :max-per-page="1"
-            :offset="40"
-          >
-            <div>
-              <common-video-clip :content="playlist[0]" />
-              <div class="caption font-weight-bold">
+          <div class="py-2 pl-11 d-flex flex-row flex-nowrap align-center">
+            <div class="flex-grow-1">
+              <common-video-clip
+                :content="playlist[0]"
+              />
+              <div class="caption font-weight-bold mt-2">
                 This is Adv
               </div>
               <div class="caption font-weight-bold">
                 Aito Hideki
               </div>
             </div>
-          </common-carousel>
+            <div class="mb-12">
+              <v-icon class="ma-3">
+                mdi-gift
+              </v-icon>
+            </div>
+          </div>
           <v-row no-gutters>
             <v-spacer />
             <v-subheader class="text-center">

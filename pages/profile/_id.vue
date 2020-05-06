@@ -31,7 +31,7 @@
               1.38M Followers
             </div>
           </div>
-          <div class="d-flex flex-column align-center mr-4 align-stretch pb-6">
+          <div class="d-flex flex-column align-center mr-4 align-stretch pb-3">
             <v-btn class="white--text my-1" color="primary darken-1">
               Follow
             </v-btn>
