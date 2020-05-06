@@ -17,6 +17,7 @@
             :content="content"
             class="flex-grow-0 flex-shrink-0"
             :style="{ width: '135px' }"
+            @click="$router.push(`/video/${content.id}`)"
           />
           <div class="video-tip ml-2 flex-grow-1 flex-shrink-1 body-2 d-flex flex-column justify-center">
             <div>

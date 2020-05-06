@@ -9,7 +9,11 @@
       :class="{ 'd-none': hideDetails }"
     >
       <div class="d-flex align-stretch my-3">
-        <v-avatar size="40" class="mr-4">
+        <v-avatar
+          size="40"
+          class="tapable mr-4"
+          @click="$router.push(`/profile/${content.author}`)"
+        >
           <v-img :src="creator.avatar" />
         </v-avatar>
         <div class="d-flex flex-column justify-center">
