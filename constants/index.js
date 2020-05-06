@@ -92,9 +92,14 @@ const getRandomDonations = () => {
   const cnt = Math.floor(Math.random() * 5)
   const dns = []
   for (let i = 0; i < cnt; i++) {
+    const amount = dmounts[Math.floor(Math.random() * dmounts.length)]
     dns.push({
       donator: Math.floor(Math.random() * creators.length),
-      amount: dmounts[Math.floor(Math.random() * dmounts.length)]
+      amount,
+      color: amount >= 100 ? 'warning--text'
+        : amount >= 50 ? 'yellow--text'
+          : amount >= 20 ? 'purple--text'
+            : 'success--text'
     })
   }
 
