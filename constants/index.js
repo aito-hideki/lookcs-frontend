@@ -88,7 +88,36 @@ const tags = [
 ]
 
 export const playlist = []
-export const advs = []
+export const advs = [
+  {
+    title: 'Bisimoto\'s 1,000 HP HONDA Civic Wagon',
+    advertiser: 'Honda Enterprise'
+  },
+  {
+    title: 'Trade Bitcoin',
+    advertiser: 'Crypto Facilities'
+  },
+  {
+    title: 'Yummy Cheetos',
+    advertiser: 'Cheetos'
+  },
+  {
+    title: 'Gears Tactics',
+    advertiser: 'Xbox Games'
+  },
+  {
+    title: 'Bisimoto\'s 1,000 HP HONDA Civic Wagon',
+    advertiser: 'Honda Enterprise'
+  },
+  {
+    title: 'Bisimoto\'s 1,000 HP HONDA Civic Wagon',
+    advertiser: 'Honda Enterprise'
+  },
+  {
+    title: 'Bisimoto\'s 1,000 HP HONDA Civic Wagon',
+    advertiser: 'Honda Enterprise'
+  }
+]
 
 for (let i = 0; i < 28; i++) {
   let tag = []

@@ -70,6 +70,15 @@
                   {{ flag ? 'mdi-flag' : 'mdi-flag-outline' }}
                 </v-icon>
               </v-btn>
+              <v-btn
+                icon
+                class="mr-2"
+                @click="registered = !registered"
+              >
+                <v-icon :color="registered ? 'primary' : 'secondary lighten-4'">
+                  {{ registered ? 'mdi-playlist-plus' : 'mdi-playlist-remove' }}
+                </v-icon>
+              </v-btn>
             </div>
 
             <div class="d-flex flex-row-reverse align-center">
@@ -289,6 +298,7 @@ export default {
     const stared = ref(false)
     const follow = ref(false)
     const flag = ref(false)
+    const registered = ref(false)
     const comments = ref(false)
     const options = computed(() => thumbnailOptions)
     const support = ref(true)
@@ -300,6 +310,7 @@ export default {
       stared,
       follow,
       flag,
+      registered,
       comments,
       options,
       support,
