@@ -97,9 +97,9 @@ const getRandomDonations = () => {
       donator: Math.floor(Math.random() * creators.length),
       amount,
       color: amount >= 100 ? 'warning--text'
-        : amount >= 50 ? 'yellow--text'
-          : amount >= 20 ? 'purple--text'
-            : 'success--text'
+        : amount >= 50 ? 'pink--text'
+          : amount >= 20 ? 'light-blue--text'
+            : 'green--text'
     })
   }
 
