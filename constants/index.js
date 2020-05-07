@@ -45,6 +45,29 @@ const dmounts = [
   500
 ]
 
+const dtemplates = [
+  'I love your channel!',
+  'You inspired me to start my own channel. You\'re the best.',
+  'I followed you back when you had 25 followers.',
+  'This video was EPIC! How long did it take you',
+  'I laughed SO HARD I LITERALLY peed myself!',
+  'We went to high school together. I can\'t believe how far you\'ve come.',
+  'I love that I can donate for free on this site. I plan on saving up to sub next.',
+  'What equipment do you use to do your videos?',
+  'That... was... legendary',
+  'LOL',
+  'I watched a sofa ad to get this donation. lol',
+  'I am the biggest donator! BEHOLD MY COMMENT POWER!',
+  'Do you do video requests? Would love to see you do coverage on the new Gears game.',
+  'If you react to Spongebob in your next video I will drop another $5.',
+  'Remember this comment when this guy hits 1 million followers. I\'m calling it now.',
+  'Jump. Kick. PUNCH!',
+  'I miss your Super Mario Maker videos. Those were so funny',
+  'Wanna go out',
+  'Best moment was at 12:05 by far.',
+  'This.. is... SPARTA!!'
+]
+
 export const creators = [
   {
     name: 'Panda\'s channel',
@@ -96,6 +119,7 @@ const getRandomDonations = () => {
     dns.push({
       donator: Math.floor(Math.random() * creators.length),
       amount,
+      description: dtemplates[Math.floor(Math.random() * dtemplates.length)],
       color: amount >= 100 ? 'warning--text'
         : amount >= 50 ? 'pink--text'
           : amount >= 20 ? 'light-blue--text'

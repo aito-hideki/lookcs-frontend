@@ -265,8 +265,7 @@
                   <v-img :src="creators[donation.donator].avatar" />
                 </v-avatar>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>{{ donation.description }}</p>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
